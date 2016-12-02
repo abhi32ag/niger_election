@@ -201,12 +201,13 @@ var controlSearch = new L.Control.Search({
 				});
 
 				map.addControl( controlSearch );
-
+			// Calculating total population by box zoom 
+			// Highlighting selected markers in box zoom 
 			total_pop = 0
 			map.on("boxzoomend",function(e){
 				for (var i = 0; i < latlong_markers.length; i++) {
 					if (e.boxZoomBounds.contains(latlong_markers[i].getLatLng())) {
-						
+						latlong_markers[i].options.color = "#66FF66"
 						total_pop += latlong_markers[i].n_population;
 
 					}
